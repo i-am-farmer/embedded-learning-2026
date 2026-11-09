@@ -15,8 +15,10 @@ void loop() {
     char c = Serial.read();
 
     if(c != '\n' && c != '\r'){
-      buffer[i] = c;
-      i++;
+      if(i < (sizeof(buffer) - 1)){
+          buffer[i] = c;
+          i++;
+      }
     }else{
       buffer[i] = '\0';
       if(strcmp(buffer,"on") == 0){
